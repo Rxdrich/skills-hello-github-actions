@@ -1,4 +1,4 @@
-name: Learning github action
+name: Learning GitHub Action
 on:
   pull_request:
     types: [opened]
@@ -6,10 +6,14 @@ permissions:
   pull-requests: write
 jobs:
   build:
-    name: Learning github actions
-    runs-on: ubuntu.latest
+    name: Learning GitHub Actions
+    runs-on: ubuntu-latest # validate version
     steps:
-      - run: gh pr comment $PR_URL --body "WELCOME TO THE REPOSITORY!"
+      - uses: actions/checkout@v2 
+      - name: Install GitHub CLI
+        run: sudo apt-get install gh
+      - name: Comment on PR
+        run: gh pr comment $PR_URL --body "WELCOME TO THE REPOSITORY!"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
