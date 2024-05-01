@@ -9,7 +9,7 @@ jobs:
     name: Learning GitHub Actions
     runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v4 
       - name: Install GitHub CLI
         run: sudo apt-get install gh 
       - name: Comment on PR
